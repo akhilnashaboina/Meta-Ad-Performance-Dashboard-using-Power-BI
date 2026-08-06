@@ -9,6 +9,13 @@ The dashboard provides a complete view of the advertising funnel, from **impress
 The goal of this project is to transform advertising data into actionable insights that help marketing teams evaluate campaign effectiveness, understand audience behavior, identify high-performing ad formats, and improve marketing decisions.
 
 ---
+#### Facebook
+'/Users/akhilnashaboina/Documents/META Power BI Project/Facebook Page.png'
+
+#### Instagram
+'/Users/akhilnashaboina/Documents/META Power BI Project/Instagram Page.png'
+
+---
 
 ## 🎯 Business Objective
 
