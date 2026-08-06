@@ -10,10 +10,10 @@ The goal of this project is to transform advertising data into actionable insigh
 
 ---
 #### Facebook
-'/Users/akhilnashaboina/Documents/META Power BI Project/Facebook Page.png'
+![Facebook Dashboard](Facebook%20Page.png)
 
 #### Instagram
-'/Users/akhilnashaboina/Documents/META Power BI Project/Instagram Page.png'
+![Instagram Dashboard](Instagram%20Page.png)
 
 ---
 
