@@ -4,7 +4,7 @@
 
 The **Meta Ad Performance Analysis** project is an interactive **Power BI dashboard** designed to analyze paid advertising campaign performance across **Facebook and Instagram**.
 
-The dashboard provides a complete view of the advertising funnel—from **impressions and clicks to engagements and purchases**—while also analyzing audience demographics, geographic performance, ad formats, campaign trends, and budget allocation.
+The dashboard provides a complete view of the advertising funnel, from **impressions and clicks to engagements and purchases**, while also analyzing audience demographics, geographic performance, ad formats, campaign trends, and budget allocation.
 
 The goal of this project is to transform advertising data into actionable insights that help marketing teams evaluate campaign effectiveness, understand audience behavior, identify high-performing ad formats, and improve marketing decisions.
 
