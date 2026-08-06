@@ -2,28 +2,30 @@
 
 ## 📌 Project Overview
 
-This project presents an interactive **Meta Ad Performance Dashboard developed in Power BI** to analyze paid advertising campaigns running across **Facebook and Instagram**.
+The **Meta Ad Performance Analysis** project is an interactive **Power BI dashboard** designed to analyze paid advertising campaign performance across **Facebook and Instagram**.
 
-The dashboard provides an end-to-end view of advertising performance, from **impressions and clicks to engagement and purchases**, while also allowing users to analyze campaign performance across audience demographics, geographic locations, ad formats, campaigns, interests, and time periods.
+The dashboard provides a complete view of the advertising funnel—from **impressions and clicks to engagements and purchases**—while also analyzing audience demographics, geographic performance, ad formats, campaign trends, and budget allocation.
 
-The primary objective of the project is to transform raw advertising interaction data into meaningful business insights that can help marketing teams evaluate campaign effectiveness, understand audience behavior, identify high-performing ad formats, and make better budget allocation decisions.
+The goal of this project is to transform advertising data into actionable insights that help marketing teams evaluate campaign effectiveness, understand audience behavior, identify high-performing ad formats, and improve marketing decisions.
 
 ---
 
 ## 🎯 Business Objective
 
-The dashboard was developed to help answer key marketing questions such as:
+The dashboard was developed to help answer key business questions:
 
-- How effectively are advertisements generating impressions, clicks, and engagement?
+- How effectively are ads generating impressions, clicks, and engagement?
 - How efficiently are clicks converting into purchases?
 - Which audience segments generate the highest engagement?
-- Which countries contribute the most advertising activity?
+- Which countries contribute the most campaign activity?
 - Which ad formats perform best?
 - At what times of the day is engagement highest?
-- How does campaign performance change over time?
-- Where can advertising strategy and budget allocation be improved?
+- How does advertising performance change over time?
+- Where can targeting and budget allocation be improved?
 
-The analysis focuses specifically on **paid Facebook and Instagram advertising campaigns**.
+**Domain:** Digital Marketing Analytics  
+**Platforms:** Facebook & Instagram  
+**Tool:** Microsoft Power BI
 
 ---
 
@@ -36,20 +38,19 @@ The analysis focuses specifically on **paid Facebook and Instagram advertising c
 - **Data Visualization**
 - **Interactive Slicers & Filters**
 - **Dynamic Measure Selection**
-- **Calendar / Date Analysis**
 - **Geospatial Analysis**
+- **Time-Based Analysis**
 
 ---
 
 ## 🗂️ Dataset Overview
 
-The data model contains four primary tables:
+The data model consists of four primary tables:
 
-### 1. `ad_events`
-The main fact table containing individual user interactions with advertisements.
+### `ad_events`
+The central fact table containing individual interactions between users and advertisements.
 
-Important fields include:
-
+Key fields:
 - `event_id`
 - `ad_id`
 - `user_id`
@@ -58,17 +59,9 @@ Important fields include:
 - `time_of_day`
 - `event_type`
 
-The event data captures activities such as:
+The `event_type` field captures events such as **Impression, Click, Share, Comment, and Purchase**.
 
-- Impression
-- Click
-- Share
-- Comment
-- Purchase
-
----
-
-### 2. `ads`
+### `ads`
 Contains advertisement-level information including:
 
 - `ad_id`
@@ -79,12 +72,8 @@ Contains advertisement-level information including:
 - `target_age_group`
 - `target_interests`
 
-This table enables analysis by advertising platform, creative format, and target audience.
-
----
-
-### 3. `campaigns`
-Contains campaign-level information such as:
+### `campaigns`
+Contains campaign-level information including:
 
 - `campaign_id`
 - `name`
@@ -93,14 +82,8 @@ Contains campaign-level information such as:
 - `duration_days`
 - `total_budget`
 
-This table supports campaign-level filtering and budget analysis.
-
----
-
-### 4. `users`
-Contains demographic and geographic information about users interacting with advertisements.
-
-Important fields include:
+### `users`
+Contains demographic and geographic information including:
 
 - `user_id`
 - `user_gender`
@@ -110,25 +93,236 @@ Important fields include:
 - `location`
 - `interests`
 
-This enables demographic, geographic, and audience segmentation analysis.
-
 ---
 
 ## 🔗 Data Model
 
-The dashboard uses a fact-and-dimension style data model.
+The project uses a **fact-and-dimension style data model**, with `ad_events` serving as the central fact table.
+
+### Relationships
 
 ```text
-                    campaigns
-                        │
-                        │ campaign_id
-                        ▼
-ads ◄──────────── campaign relationship
- │
- │ ad_id
- ▼
+campaigns
+    │
+    │ campaign_id
+    ▼
+   ads
+    │
+    │ ad_id
+    ▼
 ad_events
- │
- │ user_id
- ▼
-users
+    │
+    │ user_id
+    ▼
+  users
+```
+
+The main relationships are:
+
+- `ad_events[ad_id]` → `ads[ad_id]`
+- `ads[campaign_id]` → `campaigns[campaign_id]`
+- `ad_events[user_id]` → `users[user_id]`
+
+This model enables campaign, advertisement, audience, geographic, and event-level analysis.
+
+---
+
+## 📐 Key Performance Indicators
+
+| KPI | Description |
+|---|---|
+| **Impressions** | Total number of times ads were displayed |
+| **Clicks** | Total number of ad clicks |
+| **Shares** | Total number of times ads were shared |
+| **Comments** | Total comments generated by ads |
+| **Purchases** | Total purchases generated from ad interactions |
+| **Engagements** | Combined clicks, shares, and comments |
+| **CTR** | Percentage of impressions resulting in clicks |
+| **Engagement Rate** | Percentage of impressions resulting in engagement |
+| **Conversion Rate** | Percentage of clicks resulting in purchases |
+| **Purchase Rate** | Percentage of impressions resulting in purchases |
+| **Total Budget** | Total campaign budget |
+| **Avg. Budget / Campaign** | Average budget allocated per campaign |
+
+### KPI Formulas
+
+```text
+CTR = (Clicks / Impressions) × 100
+
+Engagement Rate = (Engagements / Impressions) × 100
+
+Conversion Rate = (Purchases / Clicks) × 100
+
+Purchase Rate = (Purchases / Impressions) × 100
+
+Average Budget per Campaign = Total Budget / Campaign Count
+```
+
+---
+
+## 📊 Dashboard Overview
+
+The dashboard provides a high-level view of overall advertising performance.
+
+### Overall Performance
+
+| Metric | Result |
+|---|---:|
+| Impressions | **216.0K** |
+| Clicks | **25.4K** |
+| Shares | **1.3K** |
+| Comments | **2.6K** |
+| Purchases | **1.3K** |
+| Engagements | **29.3K** |
+| CTR | **11.76%** |
+| Engagement Rate | **13.56%** |
+| Conversion Rate | **5.21%** |
+| Purchase Rate | **0.61%** |
+| Total Budget | **$2.5M** |
+| Avg. Budget / Campaign | **$50.7K** |
+
+---
+
+## 📈 Dashboard Analysis
+
+### 👥 Audience Analysis
+
+The dashboard analyzes engagement across **gender and age groups**.
+
+The gender analysis shows that female audiences contribute a larger share of engagement, while the age analysis indicates stronger engagement among younger audiences.
+
+These insights can help identify audience segments that respond more strongly to advertising campaigns.
+
+### 🌍 Geographic Analysis
+
+An interactive map displays campaign performance across countries.
+
+Major engagement markets include the **United States, India, Brazil, Germany, and the United Kingdom**.
+
+This analysis helps identify geographic markets contributing strongly to advertising activity.
+
+### 📅 Calendar Analysis
+
+A calendar visualization displays campaign activity across individual days.
+
+This helps identify:
+
+- High-activity dates
+- Low-activity periods
+- Campaign spikes
+- Promotion-driven engagement patterns
+
+### 📈 Weekly Trend Analysis
+
+A stacked column chart tracks advertising activity across weeks and compares contributions from different ad formats.
+
+This helps identify whether campaign engagement remains consistent or changes over time.
+
+### ⏰ Hourly Trend Analysis
+
+The hourly trend shows how engagement changes throughout the day.
+
+Higher engagement is observed during **afternoon and evening hours**, while early-morning activity is comparatively lower.
+
+This information can support better ad scheduling decisions.
+
+### 🎨 Ad Type Analysis
+
+The dashboard compares four advertising formats:
+
+- Carousel
+- Image
+- Stories
+- Video
+
+Performance is evaluated using metrics such as:
+
+- Impressions
+- Clicks
+- CTR
+- Purchase Rate
+- Engagement Rate
+- Conversion Rate
+
+**Video ads demonstrate strong rate-based performance, while Stories also generate strong overall activity.**
+
+---
+
+## 🎛️ Interactive Dashboard Features
+
+The dashboard includes several interactive features that allow users to explore campaign performance dynamically:
+
+- **Facebook / Instagram platform selection**
+- **Dynamic KPI selection**
+- **Campaign Name filter**
+- **Target Interest filter**
+- **Month filter**
+- **Interactive cross-filtering between visuals**
+
+The dynamic measure selector allows users to switch the metric displayed across multiple dashboard visuals without creating separate charts for every KPI.
+
+---
+
+## 💡 Key Insights
+
+1. **Strong Awareness & Engagement**  
+   The campaigns generated **216K impressions, 25.4K clicks, and 29.3K engagements**, resulting in an **11.76% CTR** and **13.56% engagement rate**.
+
+2. **Lower-Funnel Conversion Opportunity**  
+   Despite strong engagement, only **1.3K purchases** were generated, resulting in a **5.21% conversion rate** and **0.61% purchase rate**. This indicates an opportunity to improve the transition from engagement to purchase.
+
+3. **Audience Performance**  
+   Female audiences contribute a larger share of engagement, while younger audience segments demonstrate stronger interaction with advertising campaigns.
+
+4. **Geographic Performance**  
+   The United States, India, Brazil, Germany, and the United Kingdom are major contributors to campaign activity.
+
+5. **Ad Format Performance**  
+   Video ads show strong rate-based performance, while Stories also perform strongly across campaign activity.
+
+6. **Time-Based Performance**  
+   Engagement is generally stronger during afternoon and evening hours, providing an opportunity to optimize campaign scheduling.
+
+---
+
+## 🚀 Business Recommendations
+
+Based on the dashboard analysis:
+
+- **Improve conversion efficiency** by analyzing the customer journey between ad click and purchase.
+- **Prioritize high-performing ad formats**, particularly Video and Stories.
+- **Refine audience targeting** toward demographic segments showing stronger engagement.
+- **Optimize ad scheduling** around higher-engagement afternoon and evening periods.
+- **Develop geography-specific campaign strategies** based on regional engagement patterns.
+- **Use retargeting strategies** for users who engage with advertisements but do not complete a purchase.
+- Monitor **CTR, Engagement Rate, Conversion Rate, and Purchase Rate together** to evaluate the complete advertising funnel.
+
+---
+
+## 💼 Skills Demonstrated
+
+- Power BI Dashboard Development
+- Power Query
+- DAX
+- Data Modeling
+- KPI Development
+- Digital Marketing Analytics
+- Advertising Performance Analysis
+- Funnel Analysis
+- Audience Segmentation
+- Geographic Analysis
+- Time-Based Analysis
+- Dynamic Measure Selection
+- Interactive Dashboard Design
+- Data Visualization
+- Business Insight Generation
+
+---
+
+## 📌 Conclusion
+
+This project demonstrates an end-to-end **Digital Marketing Analytics solution using Power BI**, transforming event-level advertising data into an interactive dashboard for campaign performance analysis.
+
+The dashboard provides visibility into the complete advertising funnel while enabling analysis across **audience demographics, geography, ad formats, time periods, campaigns, and marketing KPIs**.
+
+The analysis identifies strong awareness and engagement performance while highlighting opportunities to improve purchase conversion, audience targeting, campaign scheduling, and budget allocation.
